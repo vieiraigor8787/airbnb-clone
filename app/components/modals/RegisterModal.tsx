@@ -3,7 +3,7 @@
 import axios from 'axios'
 import { useState } from 'react'
 import { FieldValues, useForm, SubmitHandler } from 'react-hook-form'
-// import { AiFillGithub } from 'react-icons/ai'
+import { AiFillGithub } from 'react-icons/Ai'
 import { FcGoogle } from 'react-icons/fc'
 
 import useRegisterModal from '@/hooks/useRegisterModal'
@@ -84,6 +84,20 @@ export default function RegisterModal() {
         icon={FcGoogle}
         onClick={() => {}}
       />
+      <Button
+        outline
+        label="Continuar com Github"
+        icon={AiFillGithub}
+        onClick={() => {}}
+      />
+      <div className=" text-neutral-500 mt-4 font-light">
+        <div className="flex justify-center items-center gap-2">
+          <div>Já possui uma conta?</div>
+          <div className="text-neutral-800 cursor-pointer hover:underline">
+            Login
+          </div>
+        </div>
+      </div>
     </div>
   )
 
