@@ -16,6 +16,7 @@ interface UserMenuProps {
 }
 
 export default function UserMenu({ currentUser }: UserMenuProps) {
+  console.log({ currentUser })
   const registerModal = useRegisterModal()
   const loginModal = useLoginModal()
   const [isOpen, setIsOpen] = useState(false)
@@ -36,7 +37,7 @@ export default function UserMenu({ currentUser }: UserMenuProps) {
         >
           <AiOutlineMenu />
           <div className="hidden md:block">
-            <Avatar />
+            <Avatar src="https://avatars.githubusercontent.com/u/40477878" />
           </div>
         </div>
       </div>
