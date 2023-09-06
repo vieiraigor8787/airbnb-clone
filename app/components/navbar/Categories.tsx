@@ -1,7 +1,19 @@
 import { usePathname, useSearchParams } from 'next/navigation'
-import { TbBeach } from 'react-icons/tb'
-import { GiWindmill } from 'react-icons/gi'
+import { TbBeach, TbMountain, TbPool } from 'react-icons/tb'
+import {
+  GiWindmill,
+  GiIsland,
+  GiBoatFishing,
+  GiCastle,
+  GiForestCamp,
+  GiCaveEntrance,
+  GiCactus,
+  GiBarn,
+} from 'react-icons/gi'
 import { MdOutlineVilla } from 'react-icons/md'
+import { FaSkiing } from 'react-icons/fa'
+import { BsSnow } from 'react-icons/bs'
+import { SlDiamond } from 'react-icons/sl'
 
 import Container from '../Container'
 import CategoryBox from '../CategoryBox'
@@ -13,13 +25,73 @@ export const categories = [
     description: 'asdasda',
   },
   {
-    label: 'Campo',
+    label: 'Fazenda',
     icon: GiWindmill,
     description: 'asdasda',
   },
   {
     label: 'Moderno',
     icon: MdOutlineVilla,
+    description: 'asdasda',
+  },
+  {
+    label: 'Interior',
+    icon: TbMountain,
+    description: 'asdasda',
+  },
+  {
+    label: 'Piscina',
+    icon: TbPool,
+    description: 'asdasda',
+  },
+  {
+    label: 'Ilha',
+    icon: GiIsland,
+    description: 'asdasda',
+  },
+  {
+    label: 'Lago',
+    icon: GiBoatFishing,
+    description: 'asdasda',
+  },
+  {
+    label: 'Ski',
+    icon: FaSkiing,
+    description: 'asdasda',
+  },
+  {
+    label: 'Castelo',
+    icon: GiCastle,
+    description: 'asdasda',
+  },
+  {
+    label: 'Camping',
+    icon: GiForestCamp,
+    description: 'asdasda',
+  },
+  {
+    label: 'Neve',
+    icon: BsSnow,
+    description: 'asdasda',
+  },
+  {
+    label: 'Caverna',
+    icon: GiCaveEntrance,
+    description: 'asdasda',
+  },
+  {
+    label: 'Deserto',
+    icon: GiCactus,
+    description: 'asdasda',
+  },
+  {
+    label: 'Celeiro',
+    icon: GiBarn,
+    description: 'asdasda',
+  },
+  {
+    label: 'Luxo',
+    icon: SlDiamond,
     description: 'asdasda',
   },
 ]
