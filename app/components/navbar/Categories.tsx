@@ -92,7 +92,7 @@ export const categories = [
     description: 'asdasda',
   },
   {
-    label: 'Luxo',
+    label: 'Luxuoso',
     icon: SlDiamond,
     description: 'asdasda',
   },

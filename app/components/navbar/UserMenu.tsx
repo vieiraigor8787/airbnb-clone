@@ -68,7 +68,7 @@ export default function UserMenu({ currentUser }: UserMenuProps) {
                 <MenuItem onClick={() => {}} label="Favoritos" />
                 <MenuItem onClick={() => {}} label="Minhas viagens" />
                 <MenuItem onClick={() => {}} label="Minhas propriedades" />
-                <MenuItem onClick={() => {}} label="Minha home" />
+                <MenuItem onClick={rentModal.onOpen} label="Minha home" />
                 <hr />
                 <MenuItem onClick={() => signOut()} label="Sair" />
               </>
