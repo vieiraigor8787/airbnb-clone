@@ -7,6 +7,7 @@ import { SafeUser } from '@/app/types'
 
 import useRegisterModal from '@/hooks/useRegisterModal'
 import useLoginModal from '@/hooks/useLoginModal'
+import useRentModal from '@/hooks/useRentModal'
 
 import Avatar from '../Avatar'
 import MenuItem from './MenuItem'
@@ -19,16 +20,26 @@ export default function UserMenu({ currentUser }: UserMenuProps) {
   console.log({ currentUser })
   const registerModal = useRegisterModal()
   const loginModal = useLoginModal()
+  const rentModal = useRentModal()
   const [isOpen, setIsOpen] = useState(false)
 
   const toggleOpen = useCallback(() => {
     setIsOpen((value) => !value)
   }, [])
 
+  const onRent = useCallback(() => {
+    if (!currentUser) return rentModal.onOpen()
+
+    rentModal.onOpen()
+  }, [currentUser, loginModal, rentModal])
+
   return (
     <div className="relative">
       <div className="flex items-center gap-3">
-        <div className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer">
+        <div
+          onClick={onRent}
+          className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer"
+        >
           Home
         </div>
         <div
@@ -37,7 +48,13 @@ export default function UserMenu({ currentUser }: UserMenuProps) {
         >
           <AiOutlineMenu />
           <div className="hidden md:block">
-            <Avatar src="https://avatars.githubusercontent.com/u/40477878" />
+            <Avatar
+              src={`${
+                currentUser
+                  ? 'https://avatars.githubusercontent.com/u/40477878'
+                  : ''
+              }`}
+            />
           </div>
         </div>
       </div>
