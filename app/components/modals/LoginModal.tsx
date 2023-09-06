@@ -1,6 +1,5 @@
 'use client'
 
-import axios from 'axios'
 import { AiFillGithub } from 'react-icons/Ai'
 import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
@@ -55,9 +54,10 @@ const LoginModal = () => {
     })
   }
 
-  const onToggle = useCallback(() => {
-    registerModal.onClose()
-  }, [registerModal])
+  const toggle = useCallback(() => {
+    registerModal.onOpen()
+    loginModal.onClose()
+  }, [registerModal, loginModal])
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
@@ -107,9 +107,9 @@ const LoginModal = () => {
         "
       >
         <p>
-          Já possui uma conta?
+          Primeira vez usando o AirBnb?
           <span
-            onClick={onToggle}
+            onClick={toggle}
             className="
               text-neutral-800
               cursor-pointer 
@@ -117,7 +117,7 @@ const LoginModal = () => {
             "
           >
             {' '}
-            Log in
+            Criar uma conta
           </span>
         </p>
       </div>

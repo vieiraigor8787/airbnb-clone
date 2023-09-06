@@ -8,14 +8,17 @@ import { useCallback, useState } from 'react'
 import { toast } from 'react-hot-toast'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 
+import useRegisterModal from '@/hooks/useRegisterModal'
+import useLoginModal from '@/hooks/useLoginModal'
+
 import Modal from './Modal'
 import Input from '../inputs/Input'
 import Heading from '../Heading'
 import Button from '../Button'
-import useRegisterModal from '@/hooks/useRegisterModal'
 
 const RegisterModal = () => {
   const registerModal = useRegisterModal()
+  const loginModal = useLoginModal()
   const [isLoading, setIsLoading] = useState(false)
 
   const {
@@ -47,9 +50,10 @@ const RegisterModal = () => {
       })
   }
 
-  const onToggle = useCallback(() => {
+  const toggle = useCallback(() => {
     registerModal.onClose()
-  }, [registerModal])
+    loginModal.onOpen()
+  }, [registerModal, loginModal])
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
@@ -108,7 +112,7 @@ const RegisterModal = () => {
         <p>
           Já possui uma conta?
           <span
-            onClick={onToggle}
+            onClick={toggle}
             className="
               text-neutral-800
               cursor-pointer 

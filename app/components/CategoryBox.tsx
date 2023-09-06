@@ -1,3 +1,5 @@
+'use client'
+
 import { useCallback } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { IconType } from 'react-icons'
@@ -53,7 +55,7 @@ export default function CategoryBox({
           : 'text-neutral-500 border-transparent'
       }`}
     >
-      <Icon size={36} />
+      <Icon size={32} />
       <div className="font-medium text-sm">{label}</div>
     </div>
   )
