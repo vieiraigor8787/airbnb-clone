@@ -12,6 +12,7 @@ import Heading from '../Heading'
 import dynamic from 'next/dynamic'
 import Counter from '../inputs/Counter'
 import ImageUpload from '../inputs/ImageUpload'
+import Input from '../inputs/Input'
 
 enum STEPS {
   CATEGORY = 0,
@@ -26,6 +27,7 @@ export default function RentModal() {
   const rentModal = useRentModal()
 
   const [step, setStep] = useState(STEPS.CATEGORY)
+  const [isLoading, setIsLoading] = useState(false)
 
   const {
     register,
@@ -130,7 +132,7 @@ export default function RentModal() {
         <Heading
           title="Quais benefícios você pode oferecer
           "
-          subtitle="Compartilhe algumas informações básicas sobre sua locação "
+          subtitle="Compartilhe algumas informações básicas sobre sua acomodação"
         />
         <Counter
           title="Pessoas"
@@ -161,11 +163,61 @@ export default function RentModal() {
       <div className="flex flex-col gap-8">
         <Heading
           title="Adicione fotos do lugar"
-          subtitle="Mostre aos interessados fotos interessantes sobre seu local."
+          subtitle="Mostre aos interessados fotos interessantes sobre sua acomodação."
         />
         <ImageUpload
           value={imageSrc}
           onChange={(value) => setCustomValue('imageSrc', value)}
+        />
+      </div>
+    )
+  }
+
+  if (step === STEPS.DESCRIPTION) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading
+          title="Como você descreveria sua acomodação"
+          subtitle="Apresentação breve e objetiva"
+        />
+        <Input
+          id="title"
+          label="Título"
+          disabled={isLoading}
+          register={register}
+          errors={errors}
+          required
+        />
+        <hr />
+        <Input
+          id="description"
+          label="Descrição"
+          disabled={isLoading}
+          register={register}
+          errors={errors}
+          required
+        />
+      </div>
+    )
+  }
+
+  if (step === STEPS.PRICE) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading
+          title="Agora, defina o preço"
+          subtitle="Qual o valor da sua diária"
+        />
+
+        <Input
+          id="price"
+          label="Valor"
+          formatPrice
+          type="number"
+          disabled={isLoading}
+          register={register}
+          errors={errors}
+          required
         />
       </div>
     )
