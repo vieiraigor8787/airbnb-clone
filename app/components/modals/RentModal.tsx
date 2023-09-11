@@ -3,9 +3,10 @@
 import { useMemo, useState } from 'react'
 import { FieldValues, useForm } from 'react-hook-form'
 
-import useRentModal from '@/hooks/useRentModal'
+import useRentModal from '@/app/hooks/useRentModal'
 import { categories } from '../navbar/Categories'
 import CategoryInput from '../inputs/CategoryInput'
+import CountrySelect from '../inputs/CountrySelect'
 import Modal from './Modal'
 import Heading from '../Heading'
 
@@ -45,6 +46,7 @@ export default function RentModal() {
   })
 
   const category = watch('category')
+  const location = watch('location')
 
   const setCustomValue = (id: string, value: any) => {
     setValue(id, value, {
@@ -94,11 +96,26 @@ export default function RentModal() {
     </div>
   )
 
+  if (step === STEPS.LOCATION) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading
+          title="Onde é a localização do lugar"
+          subtitle="Ajude os visitantes a acharem você"
+        />
+        <CountrySelect
+          onChange={(value) => setCustomValue('location', value)}
+          value={location}
+        />
+      </div>
+    )
+  }
+
   return (
     <Modal
       isOpen={rentModal.isOpen}
       onClose={rentModal.onClose}
-      onSubmit={rentModal.onClose}
+      onSubmit={onNext}
       actionLabel={actionLabel}
       secondaryActionLabel={secondaryActionLabel}
       secondaryAction={step === STEPS.CATEGORY ? undefined : onBack}

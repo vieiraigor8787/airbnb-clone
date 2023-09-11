@@ -5,9 +5,9 @@ import { AiOutlineMenu } from 'react-icons/Ai'
 import { signOut } from 'next-auth/react'
 import { SafeUser } from '@/app/types'
 
-import useRegisterModal from '@/hooks/useRegisterModal'
-import useLoginModal from '@/hooks/useLoginModal'
-import useRentModal from '@/hooks/useRentModal'
+import useRegisterModal from '@/app/hooks/useRegisterModal'
+import useLoginModal from '@/app/hooks/useLoginModal'
+import useRentModal from '@/app/hooks/useRentModal'
 
 import Avatar from '../Avatar'
 import MenuItem from './MenuItem'
