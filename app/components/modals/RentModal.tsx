@@ -11,6 +11,7 @@ import Modal from './Modal'
 import Heading from '../Heading'
 import dynamic from 'next/dynamic'
 import Counter from '../inputs/Counter'
+import ImageUpload from '../inputs/ImageUpload'
 
 enum STEPS {
   CATEGORY = 0,
@@ -52,6 +53,7 @@ export default function RentModal() {
   const guestCount = watch('guestCount')
   const roomCount = watch('roomCount')
   const bathroomCount = watch('bathroomCount')
+  const imageSrc = watch('imageSrc')
 
   const Map = useMemo(
     () => dynamic(() => import('../Map'), { ssr: false }),
@@ -149,6 +151,21 @@ export default function RentModal() {
           subtitle="Quantos banheiros tem disponíveis"
           value={bathroomCount}
           onChange={(value) => setCustomValue('bathroomCount', value)}
+        />
+      </div>
+    )
+  }
+
+  if (step === STEPS.IMAGES) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading
+          title="Adicione fotos do lugar"
+          subtitle="Mostre aos interessados fotos interessantes sobre seu local."
+        />
+        <ImageUpload
+          value={imageSrc}
+          onChange={(value) => setCustomValue('imageSrc', value)}
         />
       </div>
     )
