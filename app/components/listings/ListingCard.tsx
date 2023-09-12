@@ -9,6 +9,7 @@ import { Listing, Reservation } from '@prisma/client'
 import { SafeUser } from '@/app/types'
 import useCountries from '@/app/hooks/useCountries'
 import HeartButton from '../HeartButton'
+import Button from '../Button'
 
 interface ListingCardProps {
   data: Listing
@@ -33,7 +34,7 @@ export default function ListingCard({
   const { getByValue } = useCountries()
 
   const location = getByValue(data.locationValue)
-
+  console.log(location)
   const price = useMemo(() => {
     if (reservation) return reservation.totalPrice
 
@@ -76,6 +77,19 @@ export default function ListingCard({
           <HeartButton listingId={data.id} currentUser={currentUser} />
         </div>
       </div>
+      <div className="font-semibold text-lg">
+        {location?.region}, {location?.label}
+      </div>
+      <div className="font-light text-neutral-500">
+        {reservationDate || data.category}
+      </div>
+      <div className="flex items-center gap-1">
+        <div className="font-semibold">R$ {price}</div>
+        {!reservation && <div className="font-light">diária</div>}
+      </div>
+      {onAction && actionLabel && (
+        <Button disabled small label={actionLabel} onClick={handleCancel} />
+      )}
     </div>
   )
 }
