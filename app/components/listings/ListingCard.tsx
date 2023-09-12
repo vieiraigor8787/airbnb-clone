@@ -34,7 +34,6 @@ export default function ListingCard({
   const { getByValue } = useCountries()
 
   const location = getByValue(data.locationValue)
-  console.log(location)
   const price = useMemo(() => {
     if (reservation) return reservation.totalPrice
 

@@ -17,7 +17,6 @@ interface UserMenuProps {
 }
 
 export default function UserMenu({ currentUser }: UserMenuProps) {
-  console.log({ currentUser })
   const registerModal = useRegisterModal()
   const loginModal = useLoginModal()
   const rentModal = useRentModal()
