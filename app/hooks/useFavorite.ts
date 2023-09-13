@@ -17,7 +17,7 @@ const useFavorite = ({ listingId, currentUser }: IUseFavorite) => {
 
   const hasFavorited = useMemo(() => {
     const list = currentUser?.favorideIds || []
-
+    console.log(currentUser, 'aquii')
     return list.includes(listingId)
   }, [currentUser, listingId])
 
@@ -25,20 +25,22 @@ const useFavorite = ({ listingId, currentUser }: IUseFavorite) => {
     async (e: React.MouseEvent<HTMLDivElement>) => {
       e.stopPropagation()
 
-      if (!currentUser) return loginModal.onOpen()
-
+      if (!currentUser) {
+        return loginModal.onOpen()
+      }
       try {
         let request
 
         if (hasFavorited) {
           request = () => axios.delete(`/api/favorites/${listingId}`)
+          toast.success('Removido de favoritos')
         } else {
           request = () => axios.post(`/api/favorites/${listingId}`)
+          toast.success('Adicionado a favoritos')
         }
 
         await request()
         router.refresh()
-        toast.success('Adicionado a favoritos')
       } catch (error) {
         toast.error('Algo deu errado')
       }

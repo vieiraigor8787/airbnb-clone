@@ -7,7 +7,7 @@ interface IParams {
 }
 
 export async function POST(req: Request, { params }: { params: IParams }) {
-  const currentUser = getCurrentUser()
+  const currentUser = await getCurrentUser()
 
   if (!currentUser) return NextResponse.error()
 
