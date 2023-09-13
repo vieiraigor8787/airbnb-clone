@@ -1,5 +1,6 @@
 'use client'
 
+import dynamic from 'next/dynamic'
 import { IconType } from 'react-icons'
 
 import useCountries from '@/app/hooks/useCountries'
@@ -7,8 +8,15 @@ import { SafeUser } from '@/app/types'
 import Avatar from '../Avatar'
 import ListingCategory from './ListingCategory'
 
+const Map = dynamic(() => import('../Map'))
+
 interface ListingInfoProps {
   user: SafeUser
+  description: string
+  guestCount: number
+  roomCount: number
+  bathroomCount: number
+  locationValue: string
   category:
     | {
         icon: IconType
@@ -16,11 +24,6 @@ interface ListingInfoProps {
         description: string
       }
     | undefined
-  description: string
-  guestCount: number
-  roomCount: number
-  bathroomCount: number
-  locationValue: string
 }
 
 export default function ListingInfo({
@@ -57,6 +60,10 @@ export default function ListingInfo({
           description={category.description}
         />
       )}
+      <hr />
+      <div className="text-lg font-light text-neutral-500">{description}</div>
+      <hr />
+      <Map center={coordinates} />
     </div>
   )
 }
