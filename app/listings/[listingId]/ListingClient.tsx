@@ -5,7 +5,7 @@ import toast from 'react-hot-toast'
 import { useRouter } from 'next/navigation'
 import { Reservation } from '@prisma/client'
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { differenceInCalendarDays, eachDayOfInterval, setDate } from 'date-fns'
+import { differenceInCalendarDays, eachDayOfInterval } from 'date-fns'
 
 import { SafeListing, SafeUser } from '@/app/types'
 import useLoginModal from '@/app/hooks/useLoginModal'

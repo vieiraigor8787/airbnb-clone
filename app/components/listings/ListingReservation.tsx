@@ -1,5 +1,7 @@
 'use client'
 
+import { Range } from 'react-date-range'
+
 import Calendar from '../inputs/Calendar'
 
 interface ListingReservationProps {
@@ -33,6 +35,11 @@ export default function ListingReservation({
         disabledDates={disabledDates}
         onChange={(value) => onChangeDate(value.selection)}
       />
+      <hr />
+      <div className="p-4 flex justify-between items-center font-semibold text-lg">
+        <div>Total</div>
+        <div>${totalPrice}</div>
+      </div>
     </div>
   )
 }
