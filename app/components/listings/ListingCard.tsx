@@ -87,7 +87,12 @@ export default function ListingCard({
         {!reservation && <div className="font-light">diária</div>}
       </div>
       {onAction && actionLabel && (
-        <Button disabled small label={actionLabel} onClick={handleCancel} />
+        <Button
+          disabled={disabled}
+          small
+          label={actionLabel}
+          onClick={handleCancel}
+        />
       )}
     </div>
   )
