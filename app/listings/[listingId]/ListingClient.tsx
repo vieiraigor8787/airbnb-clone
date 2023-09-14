@@ -5,7 +5,7 @@ import toast from 'react-hot-toast'
 import { useRouter } from 'next/navigation'
 import { Reservation } from '@prisma/client'
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { differenceInCalendarDays, eachDayOfInterval } from 'date-fns'
+import { differenceInDays, eachDayOfInterval } from 'date-fns'
 import { Range } from 'react-date-range'
 
 import { SafeListing, SafeUser } from '@/app/types'
@@ -63,7 +63,7 @@ export default function ListingClient({
     setIsLoading(true)
 
     axios
-      .post('api/reservations', {
+      .post('/api/reservations', {
         totalPrice,
         startDate: dateRange.startDate,
         endDate: dateRange.endDate,
@@ -85,10 +85,7 @@ export default function ListingClient({
 
   useEffect(() => {
     if (dateRange.startDate && dateRange.endDate) {
-      const dayCount = differenceInCalendarDays(
-        dateRange.endDate,
-        dateRange.startDate
-      )
+      const dayCount = differenceInDays(dateRange.endDate, dateRange.startDate)
 
       if (dayCount && listing.price) {
         setTotalPrice(dayCount * listing.price)
@@ -99,7 +96,6 @@ export default function ListingClient({
 
     return () => {}
   }, [dateRange, listing.price])
-
   const category = useMemo(() => {
     return categories.find((item) => item.label === listing.category)
   }, [listing.category])
