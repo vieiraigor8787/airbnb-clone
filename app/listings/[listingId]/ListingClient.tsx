@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 import { Reservation } from '@prisma/client'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { differenceInCalendarDays, eachDayOfInterval } from 'date-fns'
+import { Range } from 'react-date-range'
 
 import { SafeListing, SafeUser } from '@/app/types'
 import useLoginModal from '@/app/hooks/useLoginModal'
@@ -54,7 +55,7 @@ export default function ListingClient({
 
   const [isLoading, setIsLoading] = useState(false)
   const [totalPrice, setTotalPrice] = useState(listing.price)
-  const [dateRange, setDateRange] = useState(initialDateRange)
+  const [dateRange, setDateRange] = useState<Range>(initialDateRange)
 
   const onCreateReservation = useCallback(() => {
     if (!currentUser) return loginModal.onOpen()
