@@ -77,7 +77,10 @@ export default function UserMenu({ currentUser }: UserMenuProps) {
                   onClick={() => router.push('/reservations')}
                   label="Minhas reservas"
                 />
-                <MenuItem onClick={() => {}} label="Minhas propriedades" />
+                <MenuItem
+                  onClick={() => router.push('/properties')}
+                  label="Minhas propriedades"
+                />
                 <MenuItem onClick={rentModal.onOpen} label="Minha home" />
                 <hr />
                 <MenuItem onClick={() => signOut()} label="Sair" />
