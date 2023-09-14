@@ -71,8 +71,7 @@ export default function ListingClient({
       .then(() => {
         toast.success('Reserva realizada com sucesso')
         setDateRange(initialDateRange)
-        //redirect to /trips
-        router.refresh()
+        router.push('/trips')
       })
       .catch(() => {
         toast.error('Algo deu errado')
