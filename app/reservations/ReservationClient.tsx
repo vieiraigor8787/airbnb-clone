@@ -16,7 +16,7 @@ interface TripsClientProps {
   currentUser?: SafeUser | null
 }
 
-export default function TripsClient({
+export default function ReservationClient({
   reservations,
   currentUser,
 }: TripsClientProps) {
@@ -30,7 +30,7 @@ export default function TripsClient({
       axios
         .delete(`/api/reservations/${id}`)
         .then(() => {
-          toast.success('Viagem cancelada')
+          toast.success('Reserva cancelada')
           router.refresh()
         })
         .catch((err) => {
@@ -45,7 +45,10 @@ export default function TripsClient({
 
   return (
     <Container>
-      <Heading title="Viagem" subtitle="Onde você esteve e onde você vai" />
+      <Heading
+        title="Reservas"
+        subtitle="Reserva(s) em sua(s) propriedade(s)"
+      />
 
       <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
         {reservations.map((reservation) => (
@@ -56,7 +59,7 @@ export default function TripsClient({
             actionId={reservation.id}
             onAction={onCancel}
             disabled={deletingId === reservation.id}
-            actionLabel="Cancelar reserva"
+            actionLabel="Cancelar reserva do usuário"
             currentUser={currentUser}
           />
         ))}
