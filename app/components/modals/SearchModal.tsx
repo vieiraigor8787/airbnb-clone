@@ -163,13 +163,13 @@ export default function SearchModal() {
           title="Quartos"
           subtitle=""
           value={roomCount}
-          onChange={(value) => setGuestCount(value)}
+          onChange={(value) => setRoomCount(value)}
         />
         <Counter
           title="Banheiros"
           subtitle=""
           value={bathroomCount}
-          onChange={(value) => setGuestCount(value)}
+          onChange={(value) => setBathroomCount(value)}
         />
       </div>
     )
